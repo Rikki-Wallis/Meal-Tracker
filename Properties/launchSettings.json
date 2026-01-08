@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Meal Tracker (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "Meal Tracker (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

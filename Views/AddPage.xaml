@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+    
+<Page
+    x:Class="Meal_Tracker.Views.AddPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="DarkSlateGray">
+
+        <StackPanel Spacing="12"
+                    Padding="20">
+
+            <TextBlock x:Name="TitleText"
+                       FontSize="32"
+                       FontWeight="Bold"/>
+
+            <!-- Ingredient Fields -->
+            <StackPanel x:Name="IngredientFields"
+                        Visibility="Collapsed">
+
+                <TextBox Header="Name"/>
+                <TextBox Header="Calories/100g"/>
+                <TextBox Header="Protein/100g"/>
+                <TextBox Header="Fat/100g"/>
+                <TextBox Header="Carb/100g"/>
+
+            </StackPanel>
+
+            <!-- Recipe Add -->
+            <StackPanel x:Name="RecipeFields"
+                        Visibility="Collapsed">
+
+                <TextBox Header="Name"/>
+                <TextBox Header="Servings"/>
+                <TextBox Header="Instructions" AcceptsReturn="True"/>
+
+            </StackPanel>
+
+            <!-- Save Button -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Content="Save"
+                        Grid.Column="1"
+                        HorizontalAlignment="Right"/>
+
+                <Button Content="Back"
+                        Grid.Column="0"
+                        Click="BackButtonClick"/>
+            </Grid>
+
+        </StackPanel>
+        
+    </Grid>
+</Page>

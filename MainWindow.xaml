@@ -20,6 +20,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <!-- Ingredients Button -->
         <Button x:Name="IngredientsButton"
                 Content="Ingredients"
                 Grid.Column="0"
@@ -28,6 +29,7 @@
                 CornerRadius="0"
                 Click="IngredientsButtonClick"/>
 
+        <!-- Ingredients Action Panel-->
         <Grid x:Name="IngredientsActionPanel"
             Visibility="Collapsed"
             Grid.Column="0"
@@ -38,41 +40,59 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Button Content="Back"
+            <Button Content="Add"
                 Grid.Row="0"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 CornerRadius="0"
-                Click="IngredientsBackClick"/>
-
-            <Button Content="Add"
-                Grid.Row="1"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-                CornerRadius="0"/>
-
-            <Button Content="Edit"
-                Grid.Row="2"            
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-                CornerRadius="0"/>
+                Click="AddIngredientsClick"/>
 
             <Button Content="View"                        
-                Grid.Row="3"               
+                Grid.Row="1"               
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
-                CornerRadius="0"/>
+                CornerRadius="0"
+                Click="ViewIngredientsClick"/>
         </Grid>
-        
-        <Button Content="Recipes"
+
+        <!-- Recipes Button -->
+        <Button  x:Name="RecipesButton"
+            Content="Recipes"
             Grid.Column="1"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
-            CornerRadius="0"/>
+            CornerRadius="0"
+            Click="RecipesButtonClick"/>
+
+        <!-- Recipes Action Panel -->
+        <Grid x:Name="RecipesActionPanel"
+            Visibility="Collapsed"
+            Grid.Column="1"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Margin="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Button Content="Add"
+                Grid.Row="0"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                CornerRadius="0"
+                Click="AddRecipeClick"/>
+
+            <Button Content="View"                        
+                Grid.Row="1"               
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                CornerRadius="0"
+                Click="ViewRecipeClick"/>
+        </Grid>
 
         <Button Content="Plan"
                 Grid.Column="2"
@@ -80,5 +100,15 @@
                 VerticalAlignment="Stretch"
                 CornerRadius="0"/>
 
+        <!-- Frame For Navigation -->
+        <Frame x:Name="MainFrame"
+               Visibility="Visible"
+               Grid.Column="1"
+               HorizontalAlignment="Stretch"
+               VerticalAlignment="Stretch"/>
+    
     </Grid>
+    
+    
+    
 </Window>

@@ -10,11 +10,16 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using Windows.Data.Pdf;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
+// EntityType enum
+public enum EntityType { 
+    Ingredient,
+    Recipe
+}
+
 
 namespace Meal_Tracker
 {
@@ -28,16 +33,53 @@ namespace Meal_Tracker
             this.InitializeComponent();
         }
 
+
+        // Ingredients Buttons
         private void IngredientsButtonClick(object sender, RoutedEventArgs e)
         {
+            this.RestoreButtonStates();
+
             IngredientsButton.Visibility = Visibility.Collapsed;
             IngredientsActionPanel.Visibility = Visibility.Visible;
         }
 
-        private void IngredientsBackClick(object sender, RoutedEventArgs e)
-        { 
+        // Recipes Buttons
+        private void RecipesButtonClick(object sender, RoutedEventArgs e)
+        {
+            this.RestoreButtonStates();
+
+            RecipesButton.Visibility = Visibility.Collapsed;
+            RecipesActionPanel.Visibility = Visibility.Visible;
+        }
+
+        // Navigate to add x
+        private void AddIngredientsClick(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(Meal_Tracker.Views.AddPage), EntityType.Ingredient);
+        }
+
+        private void AddRecipeClick(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(Meal_Tracker.Views.AddPage), EntityType.Recipe);
+        }
+
+        // View buttons
+        private void ViewIngredientsClick(object sender, RoutedEventArgs e) { }
+        
+        private void ViewRecipeClick(object sender, RoutedEventArgs e) { }
+
+        // General Restore method
+        private void RestoreButtonStates()
+        {
+            // Collapse all action panels
             IngredientsActionPanel.Visibility = Visibility.Collapsed;
+            RecipesActionPanel.Visibility = Visibility.Collapsed;
+
+            // Set all main buttons to visible
             IngredientsButton.Visibility = Visibility.Visible;
+            RecipesButton.Visibility = Visibility.Visible;
+
         }
     }
 }
+    

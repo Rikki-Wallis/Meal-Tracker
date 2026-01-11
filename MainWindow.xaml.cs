@@ -28,6 +28,8 @@ namespace Meal_Tracker
     /// </summary>
     public sealed partial class MainWindow : Window
     {
+        Button selectedButton;
+
         public MainWindow()
         {
             this.InitializeComponent();
@@ -55,18 +57,32 @@ namespace Meal_Tracker
         // Navigate to add x
         private void AddIngredientsClick(object sender, RoutedEventArgs e)
         {
+            RestoreButtonColours();
+            IngredientsAdd.Background = new SolidColorBrush(Microsoft.UI.Colors.DarkSlateGray);
             MainFrame.Navigate(typeof(Meal_Tracker.Views.AddPage), EntityType.Ingredient);
         }
 
         private void AddRecipeClick(object sender, RoutedEventArgs e)
         {
+            RestoreButtonColours();
+            RecipeAdd.Background = new SolidColorBrush(Microsoft.UI.Colors.DarkSlateGray);
             MainFrame.Navigate(typeof(Meal_Tracker.Views.AddPage), EntityType.Recipe);
         }
 
         // View buttons
-        private void ViewIngredientsClick(object sender, RoutedEventArgs e) { }
+        private void ViewIngredientsClick(object sender, RoutedEventArgs e) 
+        {
+            RestoreButtonColours();
+            IngredientsView.Background = new SolidColorBrush(Microsoft.UI.Colors.DarkSlateGray);
+            MainFrame.Navigate(typeof(Meal_Tracker.Views.ViewPage), EntityType.Ingredient);
+        }
         
-        private void ViewRecipeClick(object sender, RoutedEventArgs e) { }
+        private void ViewRecipeClick(object sender, RoutedEventArgs e) 
+        {
+            RestoreButtonColours();
+            RecipeView.Background = new SolidColorBrush(Microsoft.UI.Colors.DarkSlateGray);
+            MainFrame.Navigate(typeof(Meal_Tracker.Views.ViewPage), EntityType.Recipe);
+        }
 
         // General Restore method
         private void RestoreButtonStates()
@@ -79,6 +95,14 @@ namespace Meal_Tracker
             IngredientsButton.Visibility = Visibility.Visible;
             RecipesButton.Visibility = Visibility.Visible;
 
+        }
+
+        private void RestoreButtonColours() 
+        {
+            IngredientsAdd.ClearValue(Button.BackgroundProperty);
+            IngredientsView.ClearValue(Button.BackgroundProperty);
+            RecipeAdd.ClearValue(Button.BackgroundProperty);
+            RecipeView.ClearValue(Button.BackgroundProperty);
         }
     }
 }

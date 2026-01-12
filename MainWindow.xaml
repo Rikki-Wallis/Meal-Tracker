@@ -28,11 +28,13 @@
                       Grid.Column="0"
                       HorizontalAlignment="Stretch"
                       VerticalAlignment="Stretch"
+                      SelectedDatesChanged="CalanderDateChanged"
                       />
 
         <!-- Nested grid to section out the data display and ingredient and recipe tabs -->
         <Grid Grid.Column="1">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
@@ -55,118 +57,59 @@
                Grid.Column="0"
                Grid.Row="1"
                Grid.RowSpan="20"
-               Grid.ColumnSpan="2"
+               Grid.ColumnSpan="3"
                HorizontalAlignment="Stretch"
                VerticalAlignment="Stretch"/>
 
             <!-- Ingredients Button -->
             <Button x:Name="IngredientsButton"
                 Content="Ingredients"
-                Grid.Column="0"
+                Grid.Column="1"
                 Grid.Row="0"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 CornerRadius="0"
-                Click="IngredientsButtonClick"/>
-
+                BorderThickness="0"
+                Click="IngredientsButtonClick">
+                <Button.Resources>
+                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" 
+                                     Color="{StaticResource HoverColour}"/>
+                </Button.Resources>
+            </Button>
+            
             <!-- Recipes Button -->
             <Button  x:Name="RecipesButton"
-            Content="Recipes"
-            Grid.Column="1"
-            Grid.Row="0"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Stretch"
-            CornerRadius="0"
-            Click="RecipesButtonClick"/>
-
-            <!-- Ingredients Action Panel-->
-            <Grid x:Name="IngredientsActionPanel"
-            Visibility="Collapsed"
-            Grid.Column="0"
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Stretch"
-            Margin="0">
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <Button x:Name="IngredientsAdd"
-                Content="Add"
-                Grid.Column="0"
+                Content="Recipes"
+                Grid.Column="2"
+                Grid.Row="0"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
+                BorderThickness="0"
                 CornerRadius="0"
-                Click="AddIngredientsClick">
-
-
-                    <Button.Resources>
-                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="DarkSlateGray"/>
-                    </Button.Resources>
-
-                </Button>
-
-                <Button x:Name="IngredientsView"
-                Content="View"                        
-                Grid.Column="1"               
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-                CornerRadius="0"
-                Click="ViewIngredientsClick">
-
-
-                    <Button.Resources>
-                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="DarkSlateGray"/>
-                    </Button.Resources>
-
-                </Button>
-                
-            </Grid>
-
-            <!-- Recipes Action Panel -->
-            <Grid x:Name="RecipesActionPanel"
-                    Visibility="Collapsed"
-                    Grid.Column="1"
+                Click="RecipesButtonClick">
+                <Button.Resources>
+                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" 
+                                     Color="{StaticResource HoverColour}"/>
+                </Button.Resources>
+            </Button>
+            
+            <!-- Date Button -->
+            <Button x:Name="CurrentDateButton"
+                    Loaded="DateButtonLoaded"
+                    Grid.Column="0"
                     HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch"
-                    Margin="0">
+                    Click="CurrentDateButtonClicked"
+                    BorderThickness="0"
+                    CornerRadius="0">
+                <Button.Resources>
+                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" 
+                                     Color="{StaticResource HoverColour}"/>
+                </Button.Resources>
+            </Button>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
 
-                <Button x:Name="RecipeAdd"
-                Content="Add"
-                Grid.Column="0"
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-                CornerRadius="0"
-                Click="AddRecipeClick">
 
-                    <Button.Resources>
-                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="DarkSlateGray"/>
-                    </Button.Resources>
-
-                </Button>
-
-                <Button x:Name="RecipeView"
-                Content="View"                        
-                Grid.Column="1"               
-                HorizontalAlignment="Stretch"
-                VerticalAlignment="Stretch"
-                CornerRadius="0"
-                Click="ViewRecipeClick">
-
-                    <Button.Resources>
-                        <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="DarkSlateGray"/>
-                    </Button.Resources>
-                    
-                </Button>
-            </Grid>
         </Grid>
-
-
     </Grid>
 </Window>

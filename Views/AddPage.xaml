@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-    
+
 <Page
     x:Class="Meal_Tracker.Views.AddPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="DarkSlateGray">
+    <Grid Background="{StaticResource ThemeColour}">
 
         <StackPanel Spacing="12"
                     Padding="20">

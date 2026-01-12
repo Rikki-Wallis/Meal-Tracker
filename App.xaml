@@ -6,11 +6,21 @@
     xmlns:local="using:Meal_Tracker">
     <Application.Resources>
         <ResourceDictionary>
+
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <!-- Other merged dictionaries here -->
             </ResourceDictionary.MergedDictionaries>
             <!-- Other app resources here -->
+
+            <Color x:Key="ThemeColour">#142552</Color>
+            <SolidColorBrush x:Key="ThemeBrush"
+                             Color="{StaticResource ThemeColour}"/>
+
+            <Color x:Key="HoverColour">#203885</Color>
+            <SolidColorBrush x:Key="HoverBrush"
+                             Color="{StaticResource HoverColour}"/>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

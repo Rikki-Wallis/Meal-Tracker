@@ -55,6 +55,11 @@ namespace Meal_Tracker.Views
             }
         }
 
+        private void AddButtonClicked(object sender, RoutedEventArgs e) 
+        {
+            ViewFrame.Navigate(typeof(Meal_Tracker.Views.AddPage), EntityType.Ingredient);
+        }
+
         private void TextChanged(object sender, RoutedEventArgs e) 
         { 
         

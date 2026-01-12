@@ -44,6 +44,11 @@
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.251106002" />
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Views\DayReviewPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
     <Page Update="Views\ViewPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>

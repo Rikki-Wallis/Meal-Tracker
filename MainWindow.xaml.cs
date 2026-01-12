@@ -33,76 +33,74 @@ namespace Meal_Tracker
         public MainWindow()
         {
             this.InitializeComponent();
+
+            // Select Date On Calander
+            DateTimeOffset currentDate = DateTimeOffset.Now;
+            MealCalander.SelectedDates.Clear();
+            MealCalander.SelectedDates.Add(currentDate);
+            MealCalander.SetDisplayDate(currentDate);
+
         }
 
 
-        // Ingredients Buttons
+        // Ingredients Button
         private void IngredientsButtonClick(object sender, RoutedEventArgs e)
         {
-            this.RestoreButtonStates();
+            // Change colours of buttons appropriately
+            this.RestoreButtonColours();
+            var brush = (SolidColorBrush)Application.Current.Resources["ThemeBrush"];
+            IngredientsButton.Background = brush;
 
-            IngredientsButton.Visibility = Visibility.Collapsed;
-            IngredientsActionPanel.Visibility = Visibility.Visible;
-        }
-
-        // Recipes Buttons
-        private void RecipesButtonClick(object sender, RoutedEventArgs e)
-        {
-            this.RestoreButtonStates();
-
-            RecipesButton.Visibility = Visibility.Collapsed;
-            RecipesActionPanel.Visibility = Visibility.Visible;
-        }
-
-        // Navigate to add x
-        private void AddIngredientsClick(object sender, RoutedEventArgs e)
-        {
-            RestoreButtonColours();
-            IngredientsAdd.Background = new SolidColorBrush(Microsoft.UI.Colors.DarkSlateGray);
-            MainFrame.Navigate(typeof(Meal_Tracker.Views.AddPage), EntityType.Ingredient);
-        }
-
-        private void AddRecipeClick(object sender, RoutedEventArgs e)
-        {
-            RestoreButtonColours();
-            RecipeAdd.Background = new SolidColorBrush(Microsoft.UI.Colors.DarkSlateGray);
-            MainFrame.Navigate(typeof(Meal_Tracker.Views.AddPage), EntityType.Recipe);
-        }
-
-        // View buttons
-        private void ViewIngredientsClick(object sender, RoutedEventArgs e) 
-        {
-            RestoreButtonColours();
-            IngredientsView.Background = new SolidColorBrush(Microsoft.UI.Colors.DarkSlateGray);
+            // Navigate to ViewPage for ingredients
             MainFrame.Navigate(typeof(Meal_Tracker.Views.ViewPage), EntityType.Ingredient);
         }
-        
-        private void ViewRecipeClick(object sender, RoutedEventArgs e) 
-        {
-            RestoreButtonColours();
-            RecipeView.Background = new SolidColorBrush(Microsoft.UI.Colors.DarkSlateGray);
-            MainFrame.Navigate(typeof(Meal_Tracker.Views.ViewPage), EntityType.Recipe);
-        }
 
-        // General Restore method
-        private void RestoreButtonStates()
+        // Recipes Button
+        private void RecipesButtonClick(object sender, RoutedEventArgs e)
         {
-            // Collapse all action panels
-            IngredientsActionPanel.Visibility = Visibility.Collapsed;
-            RecipesActionPanel.Visibility = Visibility.Collapsed;
-
-            // Set all main buttons to visible
-            IngredientsButton.Visibility = Visibility.Visible;
-            RecipesButton.Visibility = Visibility.Visible;
+            // Change colours of buttons appropriately
+            this.RestoreButtonColours();
+            var brush = (SolidColorBrush)Application.Current.Resources["ThemeBrush"];
+            RecipesButton.Background = brush;
+            
+            // Navigate to ViewPage for ingredients
+            MainFrame.Navigate(typeof(Meal_Tracker.Views.AddPage), EntityType.Recipe);
 
         }
 
+        // Current Date Button
+
+        private void DateButtonLoaded(object sender, RoutedEventArgs e)
+        {
+            CurrentDateButtonClicked(sender, e);
+        }
+
+
+        private void CurrentDateButtonClicked(object sender, RoutedEventArgs e)
+        { 
+            // Change colours of buttons appropriately
+            this.RestoreButtonColours();
+            var brush = (SolidColorBrush)Application.Current.Resources["ThemeBrush"];
+            CurrentDateButton.Background = brush;
+
+            // Navigate to page
+        }
+
+        private void CalanderDateChanged(CalendarView sender, CalendarViewSelectedDatesChangedEventArgs args)
+        {
+            // Extract Date
+            var selectedDate = args.AddedDates[0];
+
+            // Change Date Button To Current Date
+            CurrentDateButton.Content = selectedDate.ToString("d");
+        }
+
+        // Helper Functions
         private void RestoreButtonColours() 
         {
-            IngredientsAdd.ClearValue(Button.BackgroundProperty);
-            IngredientsView.ClearValue(Button.BackgroundProperty);
-            RecipeAdd.ClearValue(Button.BackgroundProperty);
-            RecipeView.ClearValue(Button.BackgroundProperty);
+            IngredientsButton.ClearValue(Button.BackgroundProperty);
+            RecipesButton.ClearValue(Button.BackgroundProperty);
+            CurrentDateButton.ClearValue(Button.BackgroundProperty);
         }
     }
 }

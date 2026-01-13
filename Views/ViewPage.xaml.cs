@@ -57,17 +57,17 @@ namespace Meal_Tracker.Views
 
         private void AddButtonClicked(object sender, RoutedEventArgs e) 
         {
-            ViewFrame.Navigate(typeof(Meal_Tracker.Views.AddPage), EntityType.Ingredient);
+            Frame parentFrame = this.Frame;
+            parentFrame.Navigate(typeof(Meal_Tracker.Views.AddPage), _entityType);
         }
 
-        private void TextChanged(object sender, RoutedEventArgs e) 
+        private void TextChanged(object sender, TextChangedEventArgs e)
         { 
-        
         }
 
-        private void ItemClick(object sender, RoutedEventArgs e)
+        private void ItemClick(object sender, ItemClickEventArgs e)
         { 
-        
+            this.Frame.Navigate(typeof(Meal_Tracker.Views.ViewItemPage), (this._entityType, e.ClickedItem as ViewItem));
         }
 
     }

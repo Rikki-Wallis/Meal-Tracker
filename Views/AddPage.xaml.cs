@@ -36,7 +36,10 @@ namespace Meal_Tracker.Views
 
         private void BackButtonClick(object sender, RoutedEventArgs e)
         {
-            Frame.Content = null;
+            if (this.Frame.CanGoBack) 
+            {
+                this.Frame.GoBack();
+            }
         }
 
         private async void SaveButtonClick(object sender, RoutedEventArgs e)
@@ -117,8 +120,10 @@ namespace Meal_Tracker.Views
                 System.Diagnostics.Debug.WriteLine($"Added Ingredient: {id}");
 
                 // Remove frame
-                Frame.Content = null;
-
+                if (this.Frame.CanGoBack)
+                {
+                    this.Frame.GoBack();
+                }
             }
             catch (Exception ex)
             {

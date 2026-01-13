@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Meal_Tracker.ViewModels;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -21,11 +22,30 @@ namespace Meal_Tracker.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class DayReviewPage : Page
+    public sealed partial class ViewItemPage : Page
     {
-        public DayReviewPage()
+        ViewItem item { get; set; }
+        EntityType entityType { get; set; }
+
+        public ViewItemPage()
         {
             InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            // Get ingredient ID from nav param
+            if (e.Parameter is ValueTuple<EntityType, ViewItem> parameters) 
+            {
+                // Set Attributes
+                this.entityType = parameters.Item1;
+                this.item = parameters.Item2;
+
+                // Set Data
+                TitleText.Text = this.item.Name;
+            }
         }
     }
 }

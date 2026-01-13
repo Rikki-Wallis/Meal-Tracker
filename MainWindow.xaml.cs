@@ -84,15 +84,28 @@ namespace Meal_Tracker
             CurrentDateButton.Background = brush;
 
             // Navigate to page
+            MainFrame.Navigate(typeof(Meal_Tracker.Views.DayReviewPage));
+
         }
 
         private void CalanderDateChanged(CalendarView sender, CalendarViewSelectedDatesChangedEventArgs args)
         {
-            // Extract Date
-            var selectedDate = args.AddedDates[0];
+            // If something is selected update date to that
+            try
+            {
+                // Extract Date
+                var selectedDate = args.AddedDates[0];
 
-            // Change Date Button To Current Date
-            CurrentDateButton.Content = selectedDate.ToString("d");
+                // Change Date Button To Current Date
+                CurrentDateButton.Content = selectedDate.ToString("d");
+
+            } 
+            // Otherwise, there is nothing selected so set it to today
+            catch
+            {
+                var selectedDate = DateTime.Today;
+                CurrentDateButton.Content = selectedDate.ToString("d");
+            }
         }
 
         // Helper Functions
